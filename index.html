@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IB Academic OS</title>
+<meta name="theme-color" content="#12161c">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <nav id="nav">
+    <div class="brand">IB ACADEMIC OS</div>
+    <a href="#/dashboard">Dashboard</a>
+    <a href="#/subjects">Subjects</a>
+    <a href="#/tasks">Tasks</a>
+    <a href="#/assessments">Assessments</a>
+    <a href="#/planner">Planner</a>
+    <a href="#/grades">Grades</a>
+    <a href="#/errors">Error Log</a>
+    <a href="#/timer">Study Timer</a>
+    <a href="#/resources">Resources</a>
+    <a href="#/settings">Settings</a>
+  </nav>
+  <main id="main">
+    <p class="muted">Loading…</p>
+  </main>
+
+  <script src="js/db.js"></script>
+  <script src="js/priority.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/ai/provider.js"></script>
+  <script src="js/modules/dashboard.js"></script>
+  <script src="js/modules/subjects.js"></script>
+  <script src="js/modules/tasks.js"></script>
+  <script src="js/modules/assessments.js"></script>
+  <script src="js/modules/planner.js"></script>
+  <script src="js/modules/grades.js"></script>
+  <script src="js/modules/errors.js"></script>
+  <script src="js/modules/timer.js"></script>
+  <script src="js/modules/resources.js"></script>
+  <script src="js/modules/settings.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,204 @@
+/* ===================================================================
+   IB Academic OS — design tokens
+   Concept: an instrument panel, not a SaaS dashboard. The one thing
+   this app already has that's genuinely its own is the Red/Yellow/
+   Green task-priority signal — so that's the visual anchor. Sharp
+   corners, left-border signal coding, monospace for anything that's
+   a live reading (countdowns, timers, dates).
+   =================================================================== */
+
+:root {
+  /* Color */
+  --ink: #12161c;
+  --panel: #1b212b;
+  --panel-raised: #232a35;
+  --line: #2c3644;
+  --text: #e8eaed;
+  --text-muted: #8b94a3;
+  --accent: #4c8dff;
+  --signal-r: #e5484d;
+  --signal-y: #e5a93d;
+  --signal-g: #3dae6e;
+
+  /* Type */
+  --font-head: "Space Grotesk", "Arial Narrow", sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", monospace;
+
+  /* Scale */
+  --radius: 3px;
+  --gap: 16px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--ink);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-head);
+  font-weight: 600;
+  margin: 0 0 8px;
+  letter-spacing: -0.01em;
+}
+h1 { font-size: 1.5rem; }
+h2 { font-size: 1.15rem; }
+h3 { font-size: 0.95rem; color: var(--text-muted); }
+
+a { color: var(--accent); }
+
+/* Nav rail */
+#nav {
+  background: var(--panel);
+  border-right: 1px solid var(--line);
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+#nav .brand {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  padding: 0 20px 16px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 8px;
+}
+#nav a {
+  display: block;
+  padding: 10px 20px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  border-left: 2px solid transparent;
+}
+#nav a:hover { color: var(--text); background: var(--panel-raised); }
+#nav a.active {
+  color: var(--text);
+  border-left-color: var(--accent);
+  background: var(--panel-raised);
+}
+
+/* Main */
+#main { padding: 28px 32px; max-width: 920px; }
+
+/* Cards */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+.card.r { border-left: 3px solid var(--signal-r); }
+.card.y { border-left: 3px solid var(--signal-y); }
+.card.g { border-left: 3px solid var(--signal-g); }
+
+.row { display: flex; gap: var(--gap); flex-wrap: wrap; }
+.col { flex: 1; min-width: 220px; }
+
+/* Signal dot */
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+.dot.r { background: var(--signal-r); }
+.dot.y { background: var(--signal-y); }
+.dot.g { background: var(--signal-g); }
+
+/* Data / mono readouts */
+.mono, .countdown, .timer-display, time {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+.timer-display { font-size: 2.5rem; color: var(--text); }
+
+/* Forms */
+input, select, textarea, button {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: var(--radius);
+}
+label { display: block; font-size: 0.8rem; color: var(--text-muted); margin: 10px 0 4px; }
+button {
+  cursor: pointer;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0a0f16;
+  font-weight: 600;
+}
+button:hover { filter: brightness(1.08); }
+button.ghost { background: transparent; color: var(--text-muted); border-color: var(--line); }
+button.danger { background: var(--signal-r); border-color: var(--signal-r); color: #1a0a0a; }
+
+/* Empty state */
+.empty {
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Utility */
+.muted { color: var(--text-muted); }
+.mt { margin-top: 16px; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 2px 6px;
+  margin-right: 4px;
+}
+pre.prompt-output {
+  white-space: pre-wrap;
+  background: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/* Responsive: collapse nav on phone */
+@media (max-width: 720px) {
+  body { grid-template-columns: 1fr; }
+  #nav {
+    position: static;
+    height: auto;
+    display: flex;
+    overflow-x: auto;
+    padding: 8px 0;
+  }
+  #nav .brand { display: none; }
+  #nav a { padding: 8px 14px; white-space: nowrap; border-left: none; border-bottom: 2px solid transparent; }
+  #nav a.active { border-left: none; border-bottom-color: var(--accent); }
+  #main { padding: 16px; }
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
